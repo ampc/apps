@@ -1,0 +1,9 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/bookmarks
+
+# - Monitoring:    
+#     - Netdata:
+#       - abbr: YT
+#         href: https://netdata.togepi-lan.ampc.xyz/admin
+#         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/netdata.svg

@@ -1,0 +1,76 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/services
+
+- Infra:
+    - Tailscale:
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/tailscale.svg
+        widget:
+          type: tailscale
+          deviceid: nY9Ydw1CNTRL
+          key: REPLACE
+    - Portainer:
+        href: https://portainer.togepi-lan.ampc.xyz/
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/portainer.svg
+        widget:
+          type: portainer
+          url: https://portainer.togepi-lan.ampc.xyz
+          env: 2
+          key: REPLACE
+    - PiHole:
+        href: https://pihole.togepi-lan.ampc.xyz/admin
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/pi-hole.svg
+        widget:
+          type: pihole
+          url: https://pihole.togepi-lan.ampc.xyz
+          key: REPLACE
+    - Netdata:
+        href: https://netdata.togepi-lan.ampc.xyz/admin
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/netdata.svg
+
+- Downloads:
+    - Qbittorent:
+        href: https://torrents.togepi-lan.ampc.xyz/
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/qbittorrent.svg
+        widget:
+          type: qbittorrent
+          url: https://torrents.togepi-lan.ampc.xyz
+          username: admin
+          password: adminadmin
+    - Radarr:
+        href: https://radarr.togepi-lan.ampc.xyz/admin
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/radarr.svg
+        widget:
+          type: radarr
+          url: https://radarr.togepi-lan.ampc.xyz
+          key: REPLACE
+    - Sonarr:
+        href: https://sonarr.togepi-lan.ampc.xyz/admin
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/sonarr.svg
+        widget:
+          type: sonarr
+          url: https://sonarr.togepi-lan.ampc.xyz
+          key: REPLACE
+    - Jackett:
+        href: https://jackett.togepi-lan.ampc.xyz/admin
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/jackett.svg
+        widget:
+          type: jackett
+          url: https://jackett.togepi-lan.ampc.xyz
+- Media:
+    - Jellyfin:
+        href: https://jelly.togepi-lan.ampc.xyz/
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/jellyfin.svg
+        widget:
+          type: jellyfin
+          url: https://jelly.togepi-lan.ampc.xyz
+          key: REPLACE
+          enableBlocks: true # optional, defaults to false
+          enableNowPlaying: true
+    - Jellyseerr:
+        href: https://jellyseerr.togepi-lan.ampc.xyz/admin
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/jellyseerr.svg
+        widget:
+          type: jellyseerr
+          url: https://jellyseerr.togepi-lan.ampc.xyz
+          key: REPLACE

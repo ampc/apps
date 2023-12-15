@@ -1,0 +1,8 @@
+version: "3.3"
+services:
+  musicbot:
+    image: musicbot:latest
+    container_name: musicbot
+    volumes:
+      - /home/ampc/apps/musicbot/config:/config
+    restart: unless-stopped

@@ -1,0 +1,18 @@
+version: '3'
+services:
+  jellyfin:
+    container_name: jellyfin
+    image: jellyfin/jellyfin
+    user: 1000:1000
+    environment:
+      - TZ=Europe/Lisbon
+    group_add:
+      - "109" # Change this to match your "render" host group id and remove this comment
+    network_mode: 'host'
+    volumes:
+      - /home/ampc/apps/jellyfin/config:/config
+      - /home/ampc/apps/jellyfin/cache:/cache
+      - /home/ampc/server/data:/media
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    restart: unless-stopped

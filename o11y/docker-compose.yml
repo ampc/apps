@@ -1,0 +1,77 @@
+version: '3'
+services:
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    ports:
+      - 3100:3100
+    command: -config.file=/etc/loki/local-config.yaml
+  promtail:
+    image:  grafana/promtail:latest
+    container_name: promtail
+    volumes:
+      - /home/ampc/apps/o11y/promtail.yml:/etc/promtail/docker-config.yaml
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: -config.file=/etc/promtail/docker-config.yaml
+    depends_on:
+      - loki
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+    - '9090:9090'
+    command:
+    - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+    - /home/ampc/apps/o11y/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    - prometheus-storage:/prometheus
+    depends_on:
+    - cadvisor
+    - node-exporter
+  node-exporter:
+   image: prom/node-exporter:latest
+   container_name: node-exporter
+   restart: unless-stopped
+   command:
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --path.rootfs=/host
+      - --collector.filesystem.ignored-mount-points
+      - ^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)
+   volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+      - /:/host:ro,rslave
+   ports:
+     - '9100:9100'
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    privileged: true
+    container_name: cadvisor
+    ports:
+    - 8085:8080
+    devices:
+      - /dev/kmsg
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+      - /etc/machine-id:/etc/machine-id:ro
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3001:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+    - prometheus
+
+volumes:
+  grafana-storage: {}
+  prometheus-storage: {}

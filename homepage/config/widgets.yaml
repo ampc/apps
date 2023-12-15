@@ -1,0 +1,18 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/widgets
+
+
+- logo:
+    icon: https://slackmojis.com/emojis/5432-this-is-fine/download # optional
+
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+    cputemp: true
+
+- openmeteo:
+    label: Leça da Palmeira # optional
+    units: metric # or imperial
+    cache: 15

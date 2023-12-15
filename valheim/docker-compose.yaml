@@ -1,0 +1,27 @@
+version: "3"
+services: 
+  valheim: 
+    image: ghcr.io/lloesche/valheim-server
+    cap_add:
+      - sys_nice
+    volumes: 
+      - /home/ampc/valheim-server/config:/config
+      - /home/ampc/valheim-server/data:/opt/valheim
+    ports: 
+      - "2456-2458:2456-2458/udp"
+      - "9001:9001/tcp"
+    environment:
+      - SERVER_NAME="Manfios"
+      - RESTART_CRON=""
+      - SERVER_PASS=bazinga
+      - PUID=1000
+      - PGID=1000
+      - SERVER_PUBLIC=false
+      - ADMINLIST_IDS=76561198002422789 76561198017918592
+      - WORLD_NAME="mambo"
+      - VALHEIM_PLUS=true
+      - VALHEIM_PLUS_REPO=Grantapher/ValheimPlus
+      - VALHEIM_PLUS_RELEASE=tags/0.9.11.0
+      - TZ=Europe/London
+    restart: always
+    stop_grace_period: 2m

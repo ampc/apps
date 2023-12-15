@@ -1,0 +1,66 @@
+{
+	acme_dns cloudflare <REPLACE>
+}
+
+
+portainer.togepi-lan.ampc.xyz portainer.togepi.ampc.xyz { 
+  reverse_proxy localhost:9000
+}
+
+grafana.togepi-lan.ampc.xyz grafana.togepi.ampc.xyz {
+  reverse_proxy localhost:3001
+} 
+http://prometheus.togepi-lan.ampc.xyz {
+  reverse_proxy localhost:9090
+}
+http://loki.togepi-lan.ampc.xyz {
+  reverse_proxy localhost:3100
+}
+home.togepi-lan.ampc.xyz, home.togepi.ampc.xyz {
+ reverse_proxy localhost:3000
+}
+
+pihole.togepi-lan.ampc.xyz, pihole.togepi.ampc.xyz {
+ reverse_proxy localhost:8001
+}
+
+jelly.togepi-lan.ampc.xyz, jelly.togepi.ampc.xyz {
+ reverse_proxy localhost:8096
+}
+
+jackett.togepi-lan.ampc.xyz {
+ reverse_proxy localhost:9117
+}
+
+radarr.togepi-lan.ampc.xyz {
+ reverse_proxy localhost:7878
+}
+
+sonarr.togepi-lan.ampc.xyz {
+ reverse_proxy localhost:8989
+}
+
+bazarr.togepi-lan.ampc.xyz {
+ reverse_proxy localhost:6767
+}
+
+prowlarr.togepi-lan.ampc.xyz {
+ reverse_proxy localhost:9696
+}
+
+flaresolverr.togepi-lan.ampc.xyz {
+ reverse_proxy localhost:8191
+}
+
+torrents.togepi-lan.ampc.xyz {
+ reverse_proxy localhost:8080
+}
+
+jellyseerr.togepi-lan.ampc.xyz, jellyseerr.togepi.ampc.xyz {
+ reverse_proxy localhost:5055
+}
+
+netdata.togepi-lan.ampc.xyz {
+ reverse_proxy localhost:19999
+}
+
